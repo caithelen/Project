@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EuroTours offers affordable and comfortable bus journeys across Europe. Travel safely and comfortably to major cities with us.">
+    <meta name="keywords" content="EuroTours, bus travel, European cities, affordable travel, online booking">
+    <title>EuroTours - Home</title>
+
+    <!-- Simple CSS for styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 0;
+        }
+
+        p {
+            margin: 20px 0;
+            font-size: 1.1em;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 10px 0;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to EuroTours</h1>
+    </header>
+
+    <p>EuroTours is your trusted travel partner for affordable and comfortable bus journeys across Europe. 
+    We connect major cities with reliable and safe transportation, making travel easy for everyone.</p>
+
+    <h2>Why Choose EuroTours?</h2>
+    <ul>
+        <li>Comfortable and modern buses</li>
+        <li>Affordable prices with no hidden fees</li>
+        <li>Direct routes to major European cities</li>
+        <li>On-time departures and arrivals</li>
+        <li>Easy online booking and seat selection</li>
+    </ul>
+
+    <h2>Popular Destinations</h2>
+    <p>Travel with us to exciting cities like:</p>
+    <ul>
+        <li>London to Paris</li>
+        <li>Berlin to Amsterdam</li>
+        <li>Madrid to Barcelona</li>
+    </ul>
+	
+  
+
+    <p>Start your journey with EuroTours today! Book your ticket now and experience stress-free travel.</p>
+
+    <h3>Contact Us</h3>
+    <p>For inquiries, contact us at: <strong>support@eurotours.com</strong></p>
+
+    <!-- Simple Contact Form -->
+    <h3>Contact Form</h3>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <label for="name">Your Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Your Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="message">Your Message:</label><br>
+        <textarea id="message" name="message" required></textarea><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+	  <!-- Links to other pages -->
+    <a href="Product.html">To Product Page</a>
+    <a href="shop.html">To shop page</a>
+
+    <?php
+    // Handling the contact form submission
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Collect and sanitize input data
+        $name = htmlspecialchars($_POST['name']);
+        $email = htmlspecialchars($_POST['email']);
+        $message = htmlspecialchars($_POST['message']);
+        
+        // Displaying the confirmation message after form submission
+        echo "<h3>Thank you, $name!</h3>";
+        echo "<p>Your message has been received. We'll get back to you at <strong>$email</strong> soon.</p>";
+        echo "<p><strong>Your Message:</strong> $message</p>";
+    }
+    ?>
+	
+
+    <footer>
+        <p>&copy; <?php echo date("Y"); ?> EuroTours. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
