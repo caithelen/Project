@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EuroTours offers affordable and comfortable bus journeys across Europe. Travel safely and comfortably to major cities with us.">
+    <meta name="keywords" content="EuroTours, bus travel, European cities, affordable travel, online booking">
+    <title>EuroTours - Home</title>
+
+   
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eaf5ea; /* Light green background */
+            color: #2e4a2e; /* Dark green text */
+        }
+
+        /* Header */
+        header {
+            background-color: #2e7d32; /* Dgreen */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        /* Navigation bar */
+        nav {
+            text-align: center;
+            background-color: #388e3c; /* Mgreen */
+            padding: 15px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 15px;
+            font-size: 1.2em;
+            transition: 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #1b5e20; /* Dgreen */
+            border-radius: 5px;
+            padding: 12px 22px;
+        }
+
+        /* Main content */
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #1b5e20;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+
+        /* Contact Form */
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #2e4a2e;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 12px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #1b5e20;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            background-color: #2e7d32;
+            color: white;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>Welcome to EuroTours</header>
+    
+    <nav>
+        <a href="homepage.html">Home</a>
+        <a href="Product.html">Product</a>
+        <a href="shop.html">Shop</a>
+        <a href="UserLogin.html">Login/Register</a>
+        <a href="Schedule.html">Schedule</a>
+        <a href="CustomerSupport.html">Customer Support</a>
+        <a href="BookingManagment.html">Booking Management</a>
+    </nav>
+
+    <div class="container">
+        <h2>Why Choose EuroTours?</h2>
+        <ul>
+            <li>Comfortable and modern buses</li>
+            <li>Affordable prices with no hidden fees</li>
+            <li>Direct routes to major European cities</li>
+            <li>On-time departures and arrivals</li>
+            <li>Easy online booking and seat selection</li>
+        </ul>
+
+        <h2>Popular Destinations</h2>
+        <p>Travel with us to exciting cities like:</p>
+        <ul>
+            <li>London to Paris</li>
+            <li>Berlin to Amsterdam</li>
+            <li>Madrid to Barcelona</li>
+        </ul>
+        
+        <h3>Start your journey with EuroTours today!</h3>
+        <p>Book your ticket now and experience stress-free travel.</p>
+
+        <h3>Contact Us</h3>
+        <p>For inquiries, contact us at: <strong>support@eurotours.com</strong></p>
+		
+		
+
+        <?php
+        // Handling the contact form submission
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Collect and sanitize input data
+            $name = htmlspecialchars($_POST['name']);
+            $email = htmlspecialchars($_POST['email']);
+            $message = htmlspecialchars($_POST['message']);
+            
+            // Displaying the confirmation message after form submission
+            echo "<h3>Thank you, $name!</h3>";
+            echo "<p>Your message has been received. We'll get back to you at <strong>$email</strong> soon.</p>";
+            echo "<p><strong>Your Message:</strong> $message</p>";
+        }
+        ?>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; <?php echo date("Y"); ?> EuroTours. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+
+ 
