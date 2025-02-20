@@ -1,0 +1,68 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= htmlspecialchars($name) ?> - Euro Tour</title>
+ 
+</head>
+<body>
+
+<div class="container">
+    <h1><?= htmlspecialchars($details["route"]) ?></h1>
+    <img src="<?= htmlspecialchars($imageUrl) ?>" alt="Bus Ticket">
+   
+    <p class="price"><?= htmlspecialchars($details["price"]) ?></p>
+    <p class="company">Operated by: <?= htmlspecialchars($details["company"]) ?></p>
+   
+    <div class="details">
+        <p><strong>Departure:</strong> <?= htmlspecialchars($details["departure"]) ?></p>
+        <p><strong>Destination:</strong> <?= htmlspecialchars($details["destination"]) ?></p>
+        <p><strong>Duration:</strong> <?= htmlspecialchars($details["duration"]) ?></p>
+        <p><strong>Departure Time:</strong> <?= htmlspecialchars($details["departure_time"]) ?></p>
+        <p><strong>Arrival Time:</strong> <?= htmlspecialchars($details["arrival_time"]) ?></p>
+        <p><strong>Bus Operator:</strong> <?= htmlspecialchars($details["bus_operator"]) ?></p>
+        <p><strong>Bus Number:</strong> <?= htmlspecialchars($details["bus_number"]) ?></p>
+        <p><strong>Seat Class:</strong> <?= htmlspecialchars($details["seat_class"]) ?></p>
+        <p><strong>WiFi:</strong> <?= htmlspecialchars($details["wifi"]) ?></p>
+        <p><strong>Charging Ports:</strong> <?= htmlspecialchars($details["charging_ports"]) ?></p>
+        <p><strong>Snacks:</strong> <?= htmlspecialchars($details["snacks"]) ?></p>
+        <p><strong>Luggage Policy:</strong> <?= htmlspecialchars($details["luggage"]) ?></p>
+    </div>
+	
+	<?php
+$name = isset($_GET['name']) ? $_GET['name'] : 'Unknown Product';
+$price = isset($_GET['price']) ? $_GET['price'] : 'N/A';
+$details = [
+    "company" => "Euro Tour",
+    "route" => $name,
+    "price" => $price,
+    "departure" => "Madrid, Spain",
+    "destination" => "Paris, France",
+    "duration" => "12 hours",
+    "departure_time" => "08:00 AM",
+    "arrival_time" => "08:00 PM",
+    "bus_operator" => "Euro Tour Luxury Coaches",
+    "bus_number" => "ET2024-SPFR",
+    "seat_class" => "First Class",
+    "wifi" => "Yes",
+    "charging_ports" => "Available",
+    "snacks" => "Complimentary",
+    "luggage" => "1 Large + 1 Small Bag Included",
+];
+
+?>
+ <?php
+    if (isset($_GET['query'])) {
+        $query = htmlspecialchars($_GET['query']);
+        echo "<p>Showing results for: <strong>$query</strong></p>";
+    }
+
+    <a href="shop.html" class="btn">Back to Shop</a>
+    <a href="index.html" class="btn">Home</a>
+</div>
+
+</body>
+</html>

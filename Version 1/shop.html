@@ -1,0 +1,35 @@
+<?php
+// shop.php (Shop Page Listing Products)
+$shopProducts = [
+    ["name" => "Bus1", "price" => "$7"],
+    ["name" => "train", "price" => "$12"],
+    
+];
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shop</title>
+</head>
+<body>
+    <h1>Shop Our Products</h1>
+    <ul>
+        <?php foreach ($shopProducts as $item) { ?>
+            <li><?php echo $item["name"] . " - " . $item["price"]; ?></li>
+        <?php } ?>
+    </ul>
+    <a href="index.html">Back to Homepage</a>
+	<a href="product.html">product</a>
+	<h1>Search Our Products</h1>
+    <form action="search.php" method="GET">
+        <input type="text" name="query" placeholder="Enter search term...">
+        <button type="submit">Search</button>
+    </form>
+	<?php
+    if (isset($_GET['query'])) {
+        $query = htmlspecialchars($_GET['query']);
+        echo "<p>Showing results for: <strong>$query</strong></p>";
+    }
+</body>
+</html>
+
