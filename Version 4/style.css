@@ -1,0 +1,170 @@
+//* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eaf5ea; /* Light green background */
+    color: #2e4a2e; /* Dark green text */
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #2e7d32; /* Dark Green */
+    color: white;
+    padding: 15px 30px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Left Section (Menu & Logo) */
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+/* Menu Icon */
+.menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+/* Company Logo */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Right Section (Cart, Login, Search) */
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Shopping Cart */
+.cart-icon {
+    font-size: 22px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+/* Login Button */
+.login-btn {
+    background-color: #1565c0; /* Blue button */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 15px;
+    transition: background 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #0d47a1; /* Darker blue on hover */
+}
+
+/* Search Bar */
+.search-bar {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #388e3c; /* Medium Green */
+    padding: 15px 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 1.2em;
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #1b5e20; /* Dark Green */
+    border-radius: 5px;
+}
+
+/* Main Content */
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #1b5e20; /* Dark Green */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+/* Contact Form */
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+}
+
+label {
+    font-weight: bold;
+    color: #2e4a2e;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #2e7d32; /* Dark Green */
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #1b5e20;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background-color: #2e7d32;
+    color: white;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 1.1em;
+}

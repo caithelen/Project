@@ -1,0 +1,80 @@
+<?php
+// shop.php (Shop Page Listing Products)
+$shopProducts = [
+    ["name" => "Bus1", "price" => "$7"],
+    ["name" => "Train", "price" => "$12"],
+];
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Euro Tour</title>
+
+    
+        <!-- Link to External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <!-- Header Section -->
+    <header>
+        <div class="header-left">
+            <div class="menu-icon">&#9776;</div>  <!-- Unicode for menu icon -->
+            <div class="logo">EuroTours</div>
+        </div>
+        <div class="header-right">
+            <div class="cart-icon">&#128722;</div> <!-- Unicode for cart icon -->
+            <button class="login-btn">Login/Signup</button>
+            <input type="text" class="search-bar" placeholder="Search">
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="homepage.html">Home</a>
+        <a href="Product.html">Product</a>
+        <a href="shop.html">Shop</a>
+        <a href="UserLogin.html">Login/Register</a>
+		<a href="RealTimeUpdates.html">RealTime Updates</a>
+		<a href="BookingManagment.html">Booking Management</a>
+        <a href="Schedule.html">Schedule</a>
+        <a href="CustomerSupport.html">Customer Support</a>
+    </nav>
+
+    <div class="container">
+        <h1>Shop Our Products</h1>
+
+        <div class="product-list">
+            <?php foreach ($shopProducts as $item) { ?>
+                <div class="product">
+                    <p><strong><?= htmlspecialchars($item["name"]) ?></strong></p>
+                    <p>Price: <?= htmlspecialchars($item["price"]) ?></p>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <h1>Search Our Products</h1>
+        <form action="search.php" method="GET">
+            <input type="text" name="query" placeholder="Enter search term...">
+            <button type="submit">Search</button>
+        </form>
+
+        <?php
+        if (isset($_GET['query'])) {
+            $query = htmlspecialchars($_GET['query']);
+            echo "<p>Showing results for: <strong>$query</strong></p>";
+        }
+        ?>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; <?= date("Y"); ?> EuroTours. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
