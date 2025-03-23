@@ -1,26 +1,4 @@
-<?php
-include 'trips.php'; // Handles DB connection & query
-include 'TourTrip.php'; // Your new OOP Trip class
-
-$tripObjects = [];
-
-// Convert each trip from the DB into a TourTrip object
-foreach ($trips as $data) {
-    $tripObj = new TourTrip(
-        $data['destination'],
-        $data['description'],
-        $data['cost'],
-        $data['image']
-    );
-    
-    // Optional: apply discounts if needed
-    // if ($tripObj->getDestination() === 'Paris') {
-    //     $tripObj->applyDiscount(10); // Example: 10% discount on Paris trips
-    // }
-
-    $tripObjects[] = $tripObj;
-}
-?>
+<?php include 'trips.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,16 +7,19 @@ foreach ($trips as $data) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop - Euro Tour</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Keeping previous product-list and product styles */
+    </style>
 </head>
 
 <body>
 <header>
         <div class="header-left">
-            <div class="menu-icon">&#9776;</div>
+            <div class="menu-icon">&#9776;</div>  <!-- Unicode for menu icon -->
             <div class="logo">EuroTours</div>
         </div>
         <div class="header-right">
-            <div class="cart-icon">&#128722;</div>
+            <div class="cart-icon">&#128722;</div> <!-- Unicode for cart icon -->
             <button class="login-btn">Login/Signup</button>
             <input type="text" class="search-bar" placeholder="Search">
         </div>
@@ -50,11 +31,14 @@ foreach ($trips as $data) {
         <a href="Product.html">Product</a>
         <a href="shop.php">Shop</a>
         <a href="UserLogin.html">Login/Register</a>
-        <a href="RealTimeUpdates.html">RealTime Updates</a>
-        <a href="BookingManagment.html">Booking Management</a>
+		<a href="RealTimeUpdates.html">RealTime Updates</a>
+		<a href="BookingManagment.html">Booking Management</a>
         <a href="Schedule.html">Schedule</a>
         <a href="CustomerSupport.html">Customer Support</a>
+       
     </nav>
+    <!-- Header Section -->
+    <!-- ... your existing header/nav ... -->
 
     <div class="container">
         <h1>Shop Our Trips</h1>
@@ -71,19 +55,20 @@ foreach ($trips as $data) {
             <?php endif; ?>
         </div>
 
-        <!-- Trip Cards (OOP-based) -->
+        <!-- Dynamic Trip Listing -->
         <div class="product-list">
-            <?php if (!empty($tripObjects)): ?>
-                <?php foreach ($tripObjects as $trip): ?>
-                    <div class="product">
-                        <?php if (!empty($trip->getImage())): ?>
-                            <img src="<?= htmlspecialchars($trip->getImage()); ?>" alt="<?= htmlspecialchars($trip->getDestination()); ?>" style="width:100%; height: 150px; object-fit: cover; border-radius: 5px;">
-                        <?php endif; ?>
-                        <p><strong><?= htmlspecialchars($trip->getDestination()); ?></strong></p>
-                        <p><?= htmlspecialchars($trip->getDescription()); ?></p>
-                        <p>Price: $<?= number_format($trip->getCost(), 2); ?></p>
-                        <a href="booking.php?destination=<?= urlencode($trip->getDestination()); ?>" class="btn">Book Now</a>
-                    </div>
+            <?php if (!empty($trips)): ?>
+                <?php foreach ($trips as $trip): ?>
+                   <div class="product">
+    <?php if (!empty($trip['image'])): ?>
+        <img src="<?= htmlspecialchars($trip['image']); ?>" alt="<?= htmlspecialchars($trip['destination']); ?>" style="width:100%; height: 150px; object-fit: cover; border-radius: 5px;">
+    <?php endif; ?>
+    <p><strong><?= htmlspecialchars($trip['destination']); ?></strong></p>
+    <p><?= htmlspecialchars($trip['description']); ?></p>
+    <p>Price: $<?= number_format($trip['cost'], 2); ?></p>
+    <a href="booking.php?trip_id=<?= $trip['trip_id']; ?>" class="btn">Book Now</a>
+</div>
+
                 <?php endforeach; ?>
             <?php else: ?>
                 <p>No trips found for your search.</p>
