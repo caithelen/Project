@@ -1,0 +1,159 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eaf5ea;
+    color: #2e4a2e;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
+header {
+    background-color: #2e7d32;
+    color: white;
+    padding: 1rem 0;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    border: 1px solid #fff;
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+.login-btn, .book-now-btn {
+    background-color: #1565c0;
+    color: white !important;
+    transition: background-color 0.3s;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.login-btn:hover {
+    background-color: #0d47a1;
+}
+
+/* Shop Grid Layout */
+.trips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.trip-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+}
+
+.trip-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.trip-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Cart Table */
+.cart-table {
+    width: 100%;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.cart-table th {
+    background-color: #2e7d32;
+    color: white;
+    padding: 1rem;
+}
+
+.cart-table td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+/* Buttons */
+.add-to-cart-btn {
+    background-color: #1565c0;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #0d47a1;
+}
+
+.book-now-btn {
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.book-now-btn:hover {
+    background-color: #1b5e20;
+}
+
+.remove-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.remove-btn:hover {
+    background-color: #c82333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .trips-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .cart-table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+/* Messages */
+.alert {
+    border-radius: 4px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}

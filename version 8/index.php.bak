@@ -1,0 +1,223 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+session_start();
+
+// Define base path
+define('BASE_PATH', __DIR__);
+
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Autoload function
+spl_autoload_register(function ($class) {
+    $paths = [
+        BASE_PATH . '/app/controllers/',
+        BASE_PATH . '/app/models/',
+        BASE_PATH . '/app/config/',
+        BASE_PATH . '/classes/',
+        BASE_PATH
+    ];
+    
+    foreach ($paths as $path) {
+        $file = $path . '/' . $class . '.php';
+        if (file_exists($file)) {
+            require_once $file;
+            return;
+        }
+    }
+});
+
+// Load database configuration
+require_once BASE_PATH . '/app/config/Database.php';
+
+// Error handler function
+function handleError($errno, $errstr, $errfile, $errline) {
+    if (!(error_reporting() & $errno)) {
+        return false;
+    }
+    
+    error_log("Error: [$errno] $errstr in $errfile on line $errline");
+    $_SESSION['error'] = $errstr;
+    
+    if (in_array($errno, [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR])) {
+        require_once 'error.php';
+        exit(1);
+    }
+    
+    return true;
+}
+
+// Exception handler function
+function handleException($exception) {
+    error_log($exception->getMessage());
+    $_SESSION['error'] = $exception->getMessage();
+    require_once 'error.php';
+    exit(1);
+}
+
+// Set error and exception handlers
+set_error_handler('handleError');
+set_exception_handler('handleException');
+
+// Router
+$request = $_SERVER['REQUEST_URI'];
+$method = $_SERVER['REQUEST_METHOD'];
+
+// Debug info
+error_log("Original Request URI: " . $request);
+
+// Get the base path from the script name
+$scriptName = $_SERVER['SCRIPT_NAME'];
+$basePath = dirname($scriptName);
+if ($basePath === '\\') $basePath = '';
+
+// Make base path available to views
+define('BASE_URL', $basePath);
+
+// Remove base path from request
+$request = str_replace($basePath, '', $request);
+
+error_log("After base path removal: " . $request);
+
+// Remove query string and trim slashes
+$request = strtok($request, '?');
+$request = trim($request, '/');
+error_log("Final processed request: " . $request);
+error_log("Request method: " . $method);
+
+// Handle favicon.ico request
+if ($request === 'favicon.ico') {
+    header('Content-Type: image/x-icon');
+    exit;
+}
+
+// Define routes
+$routes = [
+    'GET' => [
+        '' => ['HomeController', 'index'],
+        'cart' => ['CartController', 'index'],
+        'shop' => ['ShopController', 'index'],
+        'login' => ['AuthController', 'loginForm'],
+        'register' => ['AuthController', 'registerForm'],
+        'checkout' => ['CheckoutController', 'index'],
+        'checkout/confirmation' => ['CheckoutController', 'confirmation'],
+        'my-bookings' => ['BookingController', 'index'],
+        'schedule' => ['ScheduleController', 'index'],
+        'schedule/live-updates' => ['ScheduleController', 'getLiveUpdates']
+    ],
+    'POST' => [
+        'cart/add' => ['CartController', 'add'],
+        'cart/remove' => ['CartController', 'remove'],
+        'cart/clear' => ['CartController', 'clear'],
+        'login' => ['AuthController', 'login'],
+        'register' => ['AuthController', 'register'],
+        'logout' => ['AuthController', 'logout'],
+        'checkout/process' => ['CheckoutController', 'process'],
+        'bookings/cancel' => ['BookingController', 'cancel']
+    ]
+];
+
+// Route to controller
+if (isset($routes[$method][$request])) {
+    try {
+        $route = $routes[$method][$request];
+        $controllerClass = $route[0];
+        $action = $route[1];
+        
+        if (!class_exists($controllerClass)) {
+            throw new Exception("Controller class '$controllerClass' not found");
+        }
+        
+        $controller = new $controllerClass();
+        if (!method_exists($controller, $action)) {
+            throw new Exception("Action '$action' not found in controller '$controllerClass'");
+        }
+        
+        $controller->$action();
+    } catch (Exception $e) {
+        error_log($e->getMessage());
+        $_SESSION['error'] = $e->getMessage();
+        require_once 'error.php';
+    }
+} else {
+    header('HTTP/1.0 404 Not Found');
+    require_once 'error.php';
+}
+
+// Remove base path from request
+$basePath = '/version 7.0';
+$request = str_replace($basePath, '', $request);
+error_log("After base path removal: " . $request);
+
+// Remove query string and trim slashes
+$request = strtok($request, '?');
+$request = trim($request, '/');
+error_log("Final processed request: " . $request);
+error_log("Request method: " . $method);
+
+// Handle favicon.ico request
+if ($request === 'favicon.ico') {
+    header('Content-Type: image/x-icon');
+    exit;
+}
+
+// Define routes
+$routes = [
+    'GET' => [
+        '' => ['HomeController', 'index'],
+        'cart' => ['CartController', 'index'],
+        'shop' => ['ShopController', 'index'],
+        'login' => ['AuthController', 'loginForm'],
+        'register' => ['AuthController', 'registerForm'],
+        'checkout' => ['CheckoutController', 'index'],
+        'checkout/confirmation' => ['CheckoutController', 'confirmation'],
+        'my-bookings' => ['BookingController', 'index'],
+        'schedule' => ['ScheduleController', 'index'],
+        'schedule/live-updates' => ['ScheduleController', 'getLiveUpdates']
+    ],
+    'POST' => [
+        'cart/add' => ['CartController', 'add'],
+        'cart/remove' => ['CartController', 'remove'],
+        'cart/clear' => ['CartController', 'clear'],
+        'login' => ['AuthController', 'login'],
+        'register' => ['AuthController', 'register'],
+        'logout' => ['AuthController', 'logout'],
+        'checkout/process' => ['CheckoutController', 'process'],
+        'bookings/cancel' => ['BookingController', 'cancel']
+    ]
+];
+
+// Route to controller
+error_log("Available routes for {$method}: " . print_r(array_keys($routes[$method] ?? []), true));
+error_log("Looking for route: {$request}");
+
+if (isset($routes[$method][$request])) {
+    try {
+        $route = $routes[$method][$request];
+        $controllerClass = $route[0];
+        $action = $route[1];
+        error_log("Found route: Controller={$controllerClass}, Action={$action}");
+        
+        if (!class_exists($controllerClass)) {
+            throw new Exception("Controller class '$controllerClass' not found");
+        }
+        
+        $controller = new $controllerClass();
+        if (!method_exists($controller, $action)) {
+            throw new Exception("Action '$action' not found in controller '$controllerClass'");
+        }
+        
+        $controller->$action();
+    } catch (Exception $e) {
+        error_log($e->getMessage());
+        $_SESSION['error'] = $e->getMessage();
+        require_once BASE_PATH . '/app/views/errors/error.php';
+    }
+} else {
+    header('HTTP/1.0 404 Not Found');
+    require_once BASE_PATH . '/app/views/errors/error.php';
+}

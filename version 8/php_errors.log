@@ -1,0 +1,88 @@
+[04-May-2025 15:34:55 UTC] Original Request URI: /version%207.0/
+[04-May-2025 15:34:55 UTC] After base path removal: /version%207.0/
+[04-May-2025 15:34:55 UTC] Final processed request: version%207.0
+[04-May-2025 15:34:55 UTC] Request method: GET
+[04-May-2025 15:34:55 UTC] After base path removal: version%207.0
+[04-May-2025 15:34:55 UTC] Final processed request: version%207.0
+[04-May-2025 15:34:55 UTC] Request method: GET
+[04-May-2025 15:34:55 UTC] Available routes for GET: Array
+(
+    [0] => 
+    [1] => cart
+    [2] => shop
+    [3] => login
+    [4] => register
+    [5] => checkout
+    [6] => checkout/confirmation
+    [7] => my-bookings
+    [8] => schedule
+    [9] => schedule/live-updates
+)
+
+[04-May-2025 15:34:55 UTC] Looking for route: version%207.0
+[04-May-2025 15:34:58 UTC] Original Request URI: /version%207.0/
+[04-May-2025 15:34:58 UTC] After base path removal: /version%207.0/
+[04-May-2025 15:34:58 UTC] Final processed request: version%207.0
+[04-May-2025 15:34:58 UTC] Request method: GET
+[04-May-2025 15:34:58 UTC] After base path removal: version%207.0
+[04-May-2025 15:34:58 UTC] Final processed request: version%207.0
+[04-May-2025 15:34:58 UTC] Request method: GET
+[04-May-2025 15:34:58 UTC] Available routes for GET: Array
+(
+    [0] => 
+    [1] => cart
+    [2] => shop
+    [3] => login
+    [4] => register
+    [5] => checkout
+    [6] => checkout/confirmation
+    [7] => my-bookings
+    [8] => schedule
+    [9] => schedule/live-updates
+)
+
+[04-May-2025 15:34:58 UTC] Looking for route: version%207.0
+[04-May-2025 15:35:01 UTC] Original Request URI: /version%207.0/
+[04-May-2025 15:35:01 UTC] After base path removal: /version%207.0/
+[04-May-2025 15:35:01 UTC] Final processed request: version%207.0
+[04-May-2025 15:35:01 UTC] Request method: GET
+[04-May-2025 15:35:01 UTC] After base path removal: version%207.0
+[04-May-2025 15:35:01 UTC] Final processed request: version%207.0
+[04-May-2025 15:35:01 UTC] Request method: GET
+[04-May-2025 15:35:01 UTC] Available routes for GET: Array
+(
+    [0] => 
+    [1] => cart
+    [2] => shop
+    [3] => login
+    [4] => register
+    [5] => checkout
+    [6] => checkout/confirmation
+    [7] => my-bookings
+    [8] => schedule
+    [9] => schedule/live-updates
+)
+
+[04-May-2025 15:35:01 UTC] Looking for route: version%207.0
+[04-May-2025 15:35:04 UTC] Original Request URI: /version%207.0/
+[04-May-2025 15:35:04 UTC] After base path removal: /version%207.0/
+[04-May-2025 15:35:04 UTC] Final processed request: version%207.0
+[04-May-2025 15:35:04 UTC] Request method: GET
+[04-May-2025 15:35:04 UTC] After base path removal: version%207.0
+[04-May-2025 15:35:04 UTC] Final processed request: version%207.0
+[04-May-2025 15:35:04 UTC] Request method: GET
+[04-May-2025 15:35:04 UTC] Available routes for GET: Array
+(
+    [0] => 
+    [1] => cart
+    [2] => shop
+    [3] => login
+    [4] => register
+    [5] => checkout
+    [6] => checkout/confirmation
+    [7] => my-bookings
+    [8] => schedule
+    [9] => schedule/live-updates
+)
+
+[04-May-2025 15:35:04 UTC] Looking for route: version%207.0
